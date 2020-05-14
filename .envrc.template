@@ -1,0 +1,13 @@
+# Needed to authenticate with Azure
+export ARM_CLIENT_ID=
+export ARM_CLIENT_SECRET=
+export ARM_SUBSCRIPTION_ID=
+export ARM_TENANT_ID=
+
+# Needed to authenticate with Azure DevOps
+export AZDO_ORG_SERVICE_URL=
+export AZDO_PERSONAL_ACCESS_TOKEN=
+
+# Needed to configure the Terraform deployment
+export TF_VAR_prefix=
+export TF_VAR_user_to_invite=

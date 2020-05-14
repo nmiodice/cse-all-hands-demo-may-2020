@@ -1,0 +1,38 @@
+parameters:
+    environments: []
+
+stages:
+- ${{ each environment in parameters.environments }}:
+  - stage: ${{ environment }}
+    displayName: '${{ environment }} stage'
+    variables:
+    - group: 'Vars - ${{ environment }}'
+    - group: 'Secrets - ${{ environment }}'
+
+
+    jobs:
+    - job:
+      displayName: 'job for ${{ environment }} stage'
+      steps:
+        - script: |
+            #!/usr/bin/env bash
+            echo "Value of VAR_A: $VAR_A"
+            echo "Value of VAR_B: $VAR_B"
+            echo "Value of SERVICE_CONNECTION_NAME: $SERVICE_CONNECTION_NAME"
+            echo "Value of STAGE: $STAGE"
+            echo "Value of STAGE_SECRET: $STAGE_SECRET_MAPPED_ENV"
+          displayName: 'echo variables'
+          env:
+            STAGE_SECRET_MAPPED_ENV: $(STAGE_SECRET)
+
+        - task: AzureCLI@1
+          displayName: 'use service connection'
+          inputs:
+            azureSubscription: '$(SERVICE_CONNECTION_NAME)'
+            addSpnToEnvironment: true
+            scriptLocation: inlineScript
+            inlineScript: |
+              #!/usr/bin/env bash
+              set -o xtrace
+
+              az group list

@@ -1,0 +1,20 @@
+trigger:
+  branches:
+    include:
+    - master
+
+pr:
+  branches:
+    include:
+    - master
+
+variables:
+- group: 'Vars - Common'
+
+stages:
+- template: azure-pipeline.stage-template.yml
+  parameters:
+    environments:
+    - 'dev'
+    - 'qa'
+    - 'prod'
