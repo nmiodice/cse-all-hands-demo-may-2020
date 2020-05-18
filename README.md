@@ -4,7 +4,11 @@ This repository contains material that will be covered during the May 2020 CSE A
 
 ## Devcontainers
 
-@Erik to fill out
+Dev Containers can be utilized to help standardize the local developer experience across an engineering team. With dev containers, you can use a docker container as a full-featured development environment that can be reused across your team. 
+
+For this project, we're using dev containers to automate the local installation of VS Code extensions and Terraform and the Azure DevOPS provider software dependencies.
+
+We host a gallery of reusable dev containers within our [engineering playbook](https://github.com/microsoft/code-with-engineering-playbook/tree/master/continuous-integration/devcontainers). Contributions to our dev container library are welcomed.
 
 ## Terraform provider for Azure DevOps
 
